@@ -13,4 +13,28 @@ public class BeanConfiguration {
     public CreateShipmentUseCase createShipmentUseCase(ShipmentRepository shipmentRepository) {
         return new CreateShipmentUseCaseImpl(shipmentRepository);
     }
+
+    @Bean
+    public dev.java.ecommerce.logisticsclean.domain.service.GetShipmentUseCase getShipmentUseCase(
+            ShipmentRepository shipmentRepository) {
+        return new dev.java.ecommerce.logisticsclean.application.usecase.GetShipmentUseCaseImpl(shipmentRepository);
+    }
+
+    @Bean
+    public dev.java.ecommerce.logisticsclean.domain.service.GetAllShipmentsUseCase getAllShipmentsUseCase(
+            ShipmentRepository shipmentRepository) {
+        return new dev.java.ecommerce.logisticsclean.application.usecase.GetAllShipmentsUseCaseImpl(shipmentRepository);
+    }
+
+    @Bean
+    public dev.java.ecommerce.logisticsclean.domain.service.UpdateShipmentUseCase updateShipmentUseCase(
+            ShipmentRepository shipmentRepository) {
+        return new dev.java.ecommerce.logisticsclean.application.usecase.UpdateShipmentUseCaseImpl(shipmentRepository);
+    }
+
+    @Bean
+    public dev.java.ecommerce.logisticsclean.domain.service.DeleteShipmentUseCase deleteShipmentUseCase(
+            ShipmentRepository shipmentRepository) {
+        return new dev.java.ecommerce.logisticsclean.application.usecase.DeleteShipmentUseCaseImpl(shipmentRepository);
+    }
 }
