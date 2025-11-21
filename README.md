@@ -24,6 +24,16 @@ This project demonstrates the implementation of Clean Architecture principles in
 *   Docker & Docker Compose
 *   Maven (wrapper included)
 
+## Dependencies
+
+*   **Spring Boot Starter Data JPA**: For database interactions.
+*   **Spring Boot Starter Web**: For building the REST API.
+*   **Flyway Core & PostgreSQL**: For database migration and PostgreSQL support.
+*   **PostgreSQL Driver**: Runtime dependency for PostgreSQL.
+*   **Lombok**: To reduce boilerplate code.
+*   **Spring Boot Starter Test**: For testing support.
+*   **H2 Database**: For in-memory database testing.
+
 ## Getting Started
 
 ### 1. Start the Database
@@ -46,20 +56,32 @@ You can run the application using the Maven wrapper. The application is configur
 
 The application will start on `http://localhost:8080`.
 
-### 3. Test the API
+### 3. API Endpoints (CRUD)
 
-Send a POST request to create a new shipment:
+The following endpoints are available for managing shipments:
 
-```bash
-curl -X POST http://localhost:8080/shipments \
-  -H "Content-Type: application/json" \
-  -d '{
-    "orderId": "ORD-123",
-    "origin": "New York",
-    "destination": "Los Angeles",
-    "estimatedDelivery": "2023-12-31"
-  }'
-```
+*   **Create Shipment**: `POST /shipments`
+    ```json
+    {
+      "orderId": "ORD-123",
+      "origin": "New York",
+      "destination": "Los Angeles",
+      "estimatedDelivery": "2023-12-31"
+    }
+    ```
+*   **Get Shipment**: `GET /shipments/{id}`
+*   **List Shipments**: `GET /shipments`
+*   **Update Shipment**: `PUT /shipments/{id}`
+    ```json
+    {
+      "orderId": "ORD-123",
+      "origin": "New York",
+      "destination": "San Francisco",
+      "estimatedDelivery": "2024-01-01",
+      "status": "SHIPPED"
+    }
+    ```
+*   **Delete Shipment**: `DELETE /shipments/{id}`
 
 ### 4. Run Tests
 
