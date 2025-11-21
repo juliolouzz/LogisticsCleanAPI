@@ -30,7 +30,20 @@ public class JpaShipmentRepository implements ShipmentRepository {
 
     @Override
     public Optional<Shipment> findByOrderId(String orderId) {
-        return springDataShipmentRepository.findByOrderId(orderId).map(this::toDomain);
+        return springDataShipmentRepository.findByOrderId(orderId)
+                .map(this::toDomain);
+    }
+
+    @Override
+    public java.util.List<Shipment> findAll() {
+        return springDataShipmentRepository.findAll().stream()
+                .map(this::toDomain)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        springDataShipmentRepository.deleteById(id);
     }
 
     private ShipmentEntity toEntity(Shipment shipment) {

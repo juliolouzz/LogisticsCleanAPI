@@ -11,4 +11,8 @@ public interface ShipmentRepository {
     Optional<Shipment> findById(Long id);
 
     Optional<Shipment> findByOrderId(String orderId);
+
+    java.util.List<Shipment> findAll();
+
+    void deleteById(Long id);
 }
