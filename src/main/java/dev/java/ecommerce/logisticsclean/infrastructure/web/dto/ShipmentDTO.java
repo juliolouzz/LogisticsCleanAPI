@@ -10,14 +10,17 @@ public class ShipmentDTO {
     private String destination;
     private LocalDate estimatedDelivery;
 
+    private String status;
+
     public ShipmentDTO() {
     }
 
-    public ShipmentDTO(String orderId, String origin, String destination, LocalDate estimatedDelivery) {
+    public ShipmentDTO(String orderId, String origin, String destination, LocalDate estimatedDelivery, String status) {
         this.orderId = orderId;
         this.origin = origin;
         this.destination = destination;
         this.estimatedDelivery = estimatedDelivery;
+        this.status = status;
     }
 
     public String getOrderId() {
@@ -52,7 +55,19 @@ public class ShipmentDTO {
         this.estimatedDelivery = estimatedDelivery;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Shipment toDomain() {
-        return new Shipment(orderId, origin, destination, estimatedDelivery);
+        Shipment shipment = new Shipment(orderId, origin, destination, estimatedDelivery);
+        if (status != null) {
+            shipment.setStatus(status);
+        }
+        return shipment;
     }
 }
