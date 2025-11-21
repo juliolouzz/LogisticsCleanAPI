@@ -2,9 +2,9 @@ spring:
   application:
     name: LogisticsClean
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5431/logistics_db}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -13,5 +13,5 @@ spring:
     show-sql: true
   flyway:
     enabled: true
-    locations: classpath:db/migrations
+    locations: classpath:db/migration
     baseline-on-migrate: true
